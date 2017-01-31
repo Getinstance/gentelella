@@ -1,0 +1,13 @@
+<ul uib-pagination
+    ng-if="pageable.totalElements > 0"
+    total-items="pageable.totalElements"
+    ng-model="pageable.number"
+    max-size="10"
+    next-text="Próximo"
+    last-text="Fim"
+    rotate="true"
+    force-ellipses="true"
+    previous-text="Anterior"
+    first-text="Início"
+    class="pagination-sm"
+    boundary-link-numbers="true"></ul>

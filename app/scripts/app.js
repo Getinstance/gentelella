@@ -13,10 +13,24 @@ angular
     'ngCookies',
     'ngMessages',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+      'ui.bootstrap',
+      'ui.select',
+      'ngSanitize'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
+  .config(function ($routeProvider, $httpProvider) {
+
+      Date.prototype.parseDate = function(dateString) {
+          var m = moment(dateString, 'DD-MM-YYYY', true);
+          return m.isValid() ? m.toDate() : new Date(NaN);
+      };
+
+      Date.prototype.toJSON = function(){ return moment(this).format('YYYY-MM-DD');}
+
+      $httpProvider.defaults.headers.common["X-Requested-with"] = 'XMLHTTPRequest';
+
+
+      $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',

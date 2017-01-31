@@ -25,6 +25,9 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  // Grunt Release GitHub - https://github.com/webpro/grunt-release-it
+  grunt.loadNpmTasks('grunt-release-it');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -379,6 +382,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '*.html',
+            'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
           ]
@@ -423,6 +427,17 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    // Release config
+    'release-it': {
+        options: {
+            pkgFiles: ['package.json'],
+            commitMessage: 'Release %s',
+            tagName: '%s',
+            tagAnnotation: 'Release %s',
+            buildCommand: false
+        }
     }
   });
 

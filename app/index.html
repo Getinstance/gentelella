@@ -8,34 +8,12 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/nprogress/nprogress.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="bower_components/morris.js/morris.css" />
-    <link rel="stylesheet" href="bower_components/google-code-prettify/bin/prettify.min.css" />
-    <link rel="stylesheet" href="bower_components/jquery.tagsinput/src/jquery.tagsinput.css" />
-    <link rel="stylesheet" href="bower_components/switchery/dist/switchery.css" />
-    <link rel="stylesheet" href="bower_components/ion.rangeSlider/css/ion.rangeSlider.css" />
-    <link rel="stylesheet" href="bower_components/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" />
-    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
-    <link rel="stylesheet" href="bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" />
-    <link rel="stylesheet" href="bower_components/cropper/dist/cropper.css" />
-    <link rel="stylesheet" href="bower_components/dropzone/dist/min/dropzone.min.css" />
-    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.brighttheme.css" />
-    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.buttons.css" />
-    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.css" />
-    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.history.css" />
-    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.mobile.css" />
-    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
-    <link rel="stylesheet" href="bower_components/starrr/dist/starrr.css" />
-    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/datatables.net-responsive-bs/css/responsive.bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/datatables.net-scroller-bs/css/scroller.bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/google-code-prettify/bin/prettify.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -49,7 +27,7 @@
   <body class="nav-md" ng-app="pohAdminApp">
       <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
+        <div class="col-md-3 left_col" ng-controller="HomeCtrl as home">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="index.html" class="site_title"><i class="fa fa-comment"></i> <span>POH!Admin</span></a>
@@ -79,24 +57,9 @@
                 <h3>General</h3>
                 -->
                 <ul class="nav side-menu">
-                  <li>
-                    <a href="/#/">
-                      <i class="fa fa-tachometer fa-2"></i>Dashboard</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/#/">
-                      <i class="fa fa-3 fa-key"></i>Sessões</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/#/">
-                      <i class="fa fa-download"></i>Documentos</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/#/">
-                      <i class="fa fa-upload"></i>Eventos</span>
+                  <li ng-repeat="menu in home.menuItems" ng-class="{'active':(main.title == menu.name)}">
+                    <a href="{{menu.sref}}">
+                      <i class="fa" ng-class="menu.icon"></i>{{menu.name}}</span>
                     </a>
                   </li>
                 </ul>
@@ -246,83 +209,29 @@ ga('send', 'pageview');
 <script src="bower_components/angular-messages/angular-messages.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<script src="bower_components/nprogress/nprogress.js"></script>
-<script src="bower_components/Chart.js/dist/Chart.js"></script>
-<script src="bower_components/gauge.js/dist/gauge.js"></script>
-<script src="bower_components/gauge.js/dist/gauge.min.js"></script>
-<script src="bower_components/bootstrap-progressbar/bootstrap-progressbar.js"></script>
-<script src="bower_components/iCheck/icheck.min.js"></script>
-<script src="bower_components/Flot/jquery.flot.js"></script>
-<script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="bower_components/skycons/skycons.js"></script>
-<script src="bower_components/jquery-sparkline/dist/jquery.sparkline.js"></script>
-<script src="bower_components/eve-raphael/eve.js"></script>
-<script src="bower_components/raphael/raphael.min.js"></script>
-<script src="bower_components/mocha/mocha.js"></script>
-<script src="bower_components/morris.js/morris.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/jquery.hotkeys/jquery.hotkeys.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
 <script src="bower_components/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-<script src="bower_components/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-<script src="bower_components/transitionize/dist/transitionize.js"></script>
-<script src="bower_components/switchery/dist/switchery.js"></script>
-<script src="bower_components/select2/dist/js/select2.js"></script>
-<script src="bower_components/autosize/dist/autosize.js"></script>
-<script src="bower_components/parsleyjs/dist/parsley.js"></script>
-<script src="bower_components/devbridge-autocomplete/dist/jquery.autocomplete.js"></script>
-<script src="bower_components/ion.rangeSlider/js/ion.rangeSlider.js"></script>
-<script src="bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script>
-<script src="bower_components/jquery.inputmask/dist/inputmask/inputmask.js"></script>
-<script src="bower_components/jquery-knob/js/jquery.knob.js"></script>
-<script src="bower_components/cropper/dist/cropper.js"></script>
-<script src="bower_components/validator/validator.js"></script>
-<script src="bower_components/dropzone/dist/min/dropzone.min.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.animate.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.buttons.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.callbacks.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.confirm.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.desktop.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.history.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.mobile.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.nonblock.js"></script>
-<script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
-<script src="bower_components/requirejs/require.js"></script>
-<script src="bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.js"></script>
-<script src="bower_components/starrr/dist/starrr.js"></script>
-<script src="bower_components/datatables.net/js/jquery.dataTables.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.js"></script>
-<script src="bower_components/datatables.net-buttons/js/dataTables.buttons.js"></script>
-<script src="bower_components/datatables.net-buttons/js/buttons.colVis.js"></script>
-<script src="bower_components/datatables.net-buttons/js/buttons.flash.js"></script>
-<script src="bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
-<script src="bower_components/datatables.net-buttons/js/buttons.print.js"></script>
-<script src="bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.js"></script>
-<script src="bower_components/datatables.net-fixedheader/js/dataTables.fixedHeader.js"></script>
-<script src="bower_components/datatables.net-keytable/js/dataTables.keyTable.js"></script>
-<script src="bower_components/datatables.net-responsive/js/dataTables.responsive.js"></script>
-<script src="bower_components/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="bower_components/datatables.net-scroller/js/dataTables.scroller.js"></script>
-<script src="bower_components/pdfmake/build/pdfmake.js"></script>
-<script src="bower_components/pdfmake/build/vfs_fonts.js"></script>
-<script src="bower_components/jszip/dist/jszip.js"></script>
-<script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
-<script src="bower_components/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="bower_components/DateJS/build/production/date.min.js"></script>
-<script src="bower_components/flot/jquery.flot.js"></script>
-<script src="bower_components/flot.curvedlines/curvedLines.js"></script>
-<script src="bower_components/flot-spline/js/jquery.flot.spline.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="bower_components/moment/moment.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.5.8/angular-locale_pt-br.min.js"></script>
+<!-- Controllers -->
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/about.js"></script>
+      <script src="scripts/controllers/home.js"></script>
+      <!-- Directives-->
+      <script src="scripts/directives/calendario.js"></script>
+      <script src="scripts/directives/pagination.js"></script>
 <!-- endbuild -->
 </body>
 </html>
